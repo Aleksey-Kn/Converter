@@ -6,11 +6,14 @@ public class Converter {
         Scanner scan = new Scanner(System.in);
         String[] st = new String[2];
         double workingC;
+        System.out.print("Введите исходную систему счисления: ");
         int now = scan.nextInt();
+        System.out.print("Введите конвертируемое число: ");
         String start = scan.next();
         if(start.contains(".")){
             st = start.split(Pattern.quote("."));
         }
+        System.out.print("Введите систему счисления результата: ");
         int result = scan.nextInt();
         if(now == 1){
             workingC = start.length();
@@ -32,7 +35,7 @@ public class Converter {
             }
         }
         if(result == 1){
-            for(int i = 0; i < workingC - 1; i++){
+            for(int i = 0; i < Math.floor(workingC); i++){
                 System.out.print("1");
             }
         }

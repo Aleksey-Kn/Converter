@@ -1,28 +1,52 @@
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Converter {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int working;
-        System.out.print("Введите систему счисления конвертируемого числа: ");
+        String[] st = new String[2];
+        double workingC;
         int now = scan.nextInt();
-        System.out.print("Введите конвертируемое число: ");
         String start = scan.next();
-        System.out.print("Введите систему счисления результата: ");
+        if(start.contains(".")){
+            st = start.split(Pattern.quote("."));
+        }
         int result = scan.nextInt();
         if(now == 1){
-            working = start.length();
+            workingC = start.length();
         }
         else{
-            working = Integer.parseInt(start, now);
+            if(start.contains(".")){
+                workingC = Integer.parseInt(st[0], now);
+                for(int i = 0; i < st[1].length(); i++){
+                    if(Character.isDigit(st[1].charAt(i))) {
+                        workingC += (st[1].charAt(i) - '0') / Math.pow(now, i + 1);
+                    }
+                    else {
+                        workingC += (st[1].charAt(i) - 'a' + 10) / Math.pow(now, i + 1);
+                    }
+                }
+            }
+            else{
+                workingC = Integer.parseInt(start, now);
+            }
         }
         if(result == 1){
-            for(int i = 0; i < working; i++){
+            for(int i = 0; i < workingC - 1; i++){
                 System.out.print("1");
             }
         }
         else{
-            System.out.println(Integer.toString(working, result));
+            System.out.print(Integer.toString((int)workingC, result));
+            if(workingC != Math.floor(workingC)){
+                workingC -= Math.floor(workingC);
+                System.out.print(".");
+                for(int i = 0; workingC != 0 && i < 5; i++){
+                    workingC *= result;
+                    System.out.print((int)workingC);
+                    workingC -= Math.floor(workingC);
+                }
+            }
         }
     }
 }

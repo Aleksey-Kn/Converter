@@ -41,9 +41,15 @@ public class Converter {
             if(workingC != Math.floor(workingC)){
                 workingC -= Math.floor(workingC);
                 System.out.print(".");
-                for(int i = 0; workingC != 0 && i < 5; i++){
+                for(int i = 0, check; workingC != 0 && i < 5; i++){
                     workingC *= result;
-                    System.out.print((int)workingC);
+                    check = (int)workingC;
+                    if(check < 10) {
+                        System.out.print(check);
+                    }
+                    else{
+                        System.out.print((char)('a' + check - 10));
+                    }
                     workingC -= Math.floor(workingC);
                 }
             }

@@ -13,14 +13,14 @@ public class Converter {
         String[] st = new String[2];
         double workingC;
         try {
-            System.out.print("Введите исходную систему счисления: ");
+            System.out.print("Enter the original number system: ");
             int now = scan.nextInt();
-            System.out.print("Введите конвертируемое число: ");
+            System.out.print("Enter convertible number: ");
             String start = scan.next();
             if (start.contains(".")) {
                 st = start.split(Pattern.quote("."));
             }
-            System.out.print("Введите систему счисления результата: ");
+            System.out.print("Enter a score system: ");
             int result = scan.nextInt();
             if (wrong(result) || wrong(now)) {
                 System.out.println("error");

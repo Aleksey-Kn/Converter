@@ -30,7 +30,7 @@ public class Converter {
                 workingC = start.length();
             } else {
                 if (start.contains(".")) {
-                    workingC = Integer.parseInt(st[0], now);
+                    workingC = Long.parseLong(st[0], now);
                     for (int i = 0; i < st[1].length(); i++) {
                         if (Character.isDigit(st[1].charAt(i))) {
                             workingC += (st[1].charAt(i) - '0') / Math.pow(now, i + 1);
@@ -39,7 +39,7 @@ public class Converter {
                         }
                     }
                 } else {
-                    workingC = Integer.parseInt(start, now);
+                    workingC = Long.parseLong(start, now);
                 }
             }
             if (result == 1) {
@@ -47,7 +47,7 @@ public class Converter {
                     System.out.print("1");
                 }
             } else {
-                System.out.print(Integer.toString((int) workingC, result));
+                System.out.print(Long.toString((long) workingC, result));
                 if (workingC != Math.floor(workingC)) {
                     workingC -= Math.floor(workingC);
                     System.out.print(".");
